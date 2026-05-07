@@ -11,15 +11,15 @@ using Roots
 using ForwardDiff
 
 # ╔═╡ 4a538dc0-4897-11f1-991c-bd4747535024
-md"# Approximating Roots"
+md"# Approssimare gli zeri di una funzione"
 
 # ╔═╡ 00efff6f-187f-4d32-95de-4047cbb06bc7
 md"
-### Newton's Method
+### Metodo di Newton
 
-1. Guess a first approximation to a solution of the equation $f(x) = 0$. A graph of $y = f(x)$ may help.
+1. Scegli una prima approssimazione a una soluzione dell'equazione $f(x) = 0$. Un grafico di $y = f(x)$ può essere d'aiuto.
 
-2. Use the first approximation to get a second, the second to get a third, and so on, using the formula
+2. Usa la prima approssimazione per ottenere una seconda, la seconda per ottenerne una terza, e così via, usando la formula
 
 ```math
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \text{ if } f'(x_n) \neq 0.
@@ -27,13 +27,13 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \text{ if } f'(x_n) \neq 0.
 "
 
 # ╔═╡ a3726c7f-2acd-4426-9090-e074ef375613
-md"### Example"
+md"### Esempio"
 
 # ╔═╡ 3b4c4935-2f14-446b-9101-6bf98ebbdfa6
 md"
-We can use Newton's Method to find decimal approximations to $\sqrt{2}$ by estimating the positive root of the equation $f(x) = x^2 - 2 = 0$.
+Possiamo usare il metodo di Newton per trovare approssimazioni decimali di $\sqrt{2}$ stimando la radice positiva dell'equazione $f(x) = x^2 - 2 = 0$.
 
-Given that $f(x) = x^2 - 2$, then $f'(x) = 2x$. Hence,
+Dato che $f(x) = x^2 - 2$, allora $f'(x) = 2x$. Quindi,
 ```math
 \begin{align*}
 x_{n+1} &= x_n - \frac{x_n^2-2}{2x_n} \\
@@ -42,15 +42,15 @@ x_{n+1} &= x_n - \frac{x_n^2-2}{2x_n} \\
 \end{align*}
 ```
 
-The equation
+L'equazione
 ```math
 x_{n+1} = \frac{x_n}{2} + \frac{1}{x_n}
 ```
-enables us to go from each approximation to the next with just a few keystrokes.
+ci permette di passare da un'approssimazione alla successiva con pochi tasti.
 "
 
 # ╔═╡ 42c08e17-538f-48a5-a853-ff28c976c850
-md"Let the starting value $x_0 = 1$ and $n = 3$."
+md"Sia il valore iniziale $x_0 = 1$ e $n = 3$."
 
 # ╔═╡ 0830c0e5-a5bd-4602-9437-a762c320b28a
 function example_approximate_x(n)
@@ -67,14 +67,14 @@ end
 println(example_approximate_x(3))
 
 # ╔═╡ f3b4ba74-c6b8-4cb6-b8f8-6a9610feed24
-md"With just three iterations we've guessed $\sqrt{2}$ correctly to five decimal places, or, equivalently, to six digits, $\sqrt{2} = 1.41421$.
-And it gets only more precise as $n$ increases:"
+md"Con sole tre iterazioni abbiamo approssimato $\sqrt{2}$ correttamente fino a cinque cifre decimali, o, equivalentemente, a sei cifre, $\sqrt{2} = 1.41421$.
+E diventa ancora più preciso all'aumentare di $n$:"
 
 # ╔═╡ 62c5e9bb-aaad-4f62-941f-1595268c4c6b
 println(example_approximate_x(10)[10])
 
 # ╔═╡ 4a8e18a7-8e80-4ac3-b122-fe11bcecd89c
-md"### Implementation"
+md"### Implementazione"
 
 # ╔═╡ b185a23e-599d-4c4b-9a09-a4458f4130ca
 f(x) = sin(x)
